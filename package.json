@@ -1,6 +1,6 @@
 {
   "name": "eslint-gitignore",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A utility for ESLint respecting `.gitignore` files.",
   "engines": {
     "node": "^10.12.0 || >=12.0.0"
