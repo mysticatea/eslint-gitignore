@@ -1,0 +1,62 @@
+{
+  "name": "eslint-gitignore",
+  "version": "0.0.0",
+  "description": "A utility for ESLint respecting `.gitignore` files.",
+  "engines": {
+    "node": "^10.12.0 || >=12.0.0"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "eslint": ">=6.7.0"
+  },
+  "dependencies": {
+    "array.prototype.flatmap": "^1.2.3",
+    "debug": "^4.1.1",
+    "fast-glob": "^3.2.2"
+  },
+  "devDependencies": {
+    "@mysticatea/eslint-plugin": "^13.0.0",
+    "@types/array.prototype.flatmap": "^1.2.1",
+    "@types/debug": "^4.1.5",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.5",
+    "@types/rimraf": "^3.0.0",
+    "codecov": "^3.7.0",
+    "cpx": "^1.5.0",
+    "eslint": "^7.0.0",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.1",
+    "typescript": "~3.9.3"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json && cpx \"{LICENSE,README.md,package.json}\" dist",
+    "codecov": "nyc report --reporter text-lcov | codecov --pipe --disable=gcov",
+    "lint": "eslint .",
+    "test": "npm run -s lint && npm run -s test:ci",
+    "test:ci": "tsc && nyc mocha \"test/**/*.ts\"",
+    "watch": "mocha --require ts-node/register --watch --watch-files \"lib/**/*.ts,test/**/*.ts\" \"test/**/*.ts\"",
+    "preversion": "npm test",
+    "version": "npm run -s build",
+    "postversion": "ts-node scripts/release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mysticatea/eslint-gitignore.git"
+  },
+  "keywords": [
+    "eslint",
+    "gitignore"
+  ],
+  "author": "Toru Nagashima <public@mysticatea.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mysticatea/eslint-gitignore/issues"
+  },
+  "homepage": "https://github.com/mysticatea/eslint-gitignore#readme",
+  "funding": "https://github.com/sponsors/mysticatea"
+}
